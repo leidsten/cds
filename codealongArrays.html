@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays & evt loop</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        const app = document.getElementById('app');
+        let animals = ["Giraffe", "Muskrat", "Crocodile", "Koalabear"];
+        let inputAnimal = "";
+
+        //vise fram ett tilfeldig dyr fra arrayet i viewet
+        function drawHTMLRandomOnly(){
+            let randomIndex = Math.floor(Math.random() * animals.length);
+            app.innerHTML = animals[randomIndex];
+        }
+
+       //input for å legge til et dyr i arrayet. 
+       //Bruk Console.log/debug/console til å sjekke at verdien er lagt til i arrayet
+        function drawHTMLRandomAndInput(){
+            let randomIndex = Math.floor(Math.random() * animals.length);
+            app.innerHTML = animals[randomIndex];
+            app.innerHTML += ` <br>
+            <input type="text" onchange="addAnimal(this.value)"></input>
+            `;
+
+        }
+
+       //loop for å vise alle
+       drawHTMLallTasks();
+       function drawHTMLallTasks(){
+            let randomIndex = Math.floor(Math.random() * animals.length);
+            let html = ``;
+            html += `A random animal: ${animals[randomIndex]}
+            <br>
+            <input type="text" onchange="addAnimal(this.value)"></input>
+            `;
+            
+             for(let i = 0; i < animals.length; i++){
+                 html += `<li>${animals[i]}</li>`;
+             }   
+
+             app.innerHTML = html;
+
+        }
+
+
+       function addAnimal(animalToAdd){
+           animals.push(animalToAdd);
+           console.log(animals);
+
+           drawHTMLallTasks();
+       }
+
+    </script>
+</body>
+</html>

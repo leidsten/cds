@@ -1,0 +1,19 @@
+===============
+CODEALONG  M1
+===============
+Hvor er du? sett på arrays?
+
+1.
+SETT OPP I MVC
+LAG ET ARRAY MED DYR (strings)
+VIS ET TILFELDIG DYR FRA ARRAYEN
+
+
+2.
+GJØR DET MULIG Å LEGGE TIL NYE DYR I ARRAYEN
+SJEKK AT DET NYE DYRET FAKTISK BLIR LAGT TIL I ARRAYEN (console, console.log, debug)
+VIS ET RANDOM DYR ETTER MAN HAR LAGT TIL ET NYTT DYR
+
+3.
+VIS ALLE DYRENE I ARRAYET I EI LISTE. LISTA SKAL OPPDATERES NÅR DU LEGGER TIL NYTT DYR
+-- om lett - legg til knapp bak <li> elementer som fjerner det dyret fra arrayen.

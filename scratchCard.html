@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lets get-a scratchin' folks!</title>
+    <style>
+        .scratchSquare {
+            height: 50px;
+            width: 50px;
+            margin: 5px;
+            border: 2px solid chocolate;
+            background-color: coral;
+            float: left;
+            color: coral;
+        }
+
+        .newLine{
+            clear: left;
+        }
+    </style>
+</head>
+<body>
+    <div id="sq1" class="scratchSquare" onclick="scratchSquare(this)">1-1</div>
+    <div id="sq2" class="scratchSquare" onclick="scratchSquare(this)">Terje</div>
+    <div id="sq3" class="scratchSquare" onclick="scratchSquare(this)">Terje</div>
+
+    <div id="sq4" class="scratchSquare newLine" onclick="scratchSquare(this)">Heart</div>
+    <div id="sq5" class="scratchSquare" onclick="scratchSquare(this)">1-1</div>
+    <div id="sq6" class="scratchSquare" onclick="scratchSquare(this)">1-1</div>
+
+    <div id="sq7" class="scratchSquare newLine" onclick="scratchSquare(this)">Heart</div>
+    <div id="sq8" class="scratchSquare" onclick="scratchSquare(this)">Heart</div>
+    <div id="sq9" class="scratchSquare" onclick="scratchSquare(this)">Film</div>
+    <!-- <button onclick="searchForThreeOrMoreOccurances()">Se om du har vunnet...</button> -->
+    <div id="winMsg"></div>
+
+    <script>
+       
+       //kan være emojis også - måtte bare ha noen placeholders å teste med:P
+       let cont1 = "1-1";
+       let cont2 = "Terje";
+       let cont3 = "<3";
+       let cont4 = "Film";
+
+       let clickCount = 0;
+
+       //lagre alt her og så bruke match og se etter occurances - 3 ell mer = premie
+       let allcontent = "";
+
+      function scratchSquare(clickedSquare){
+        clickedSquare.style.backgroundColor = 'dimgray'
+        clickCount++;
+        searchForThreeOrMoreOccurances()
+      }
+
+      function getRandomContent(){
+        let randomNum = Math.floor(Math.random()*4)+1;
+        if(randomNum == 1){
+            allcontent += " " + cont1;
+            return cont1;
+        } 
+        if(randomNum == 2) {
+            allcontent += " " + cont2;
+            return cont2;
+        } 
+        if(randomNum == 3) 
+        {
+            allcontent += " " + cont3;
+            return cont3;
+        } 
+        if(randomNum == 4){
+            allcontent += " " + cont4;
+            return cont4;
+        }  
+      }
+
+      setAllRandomSquareContent();
+      function setAllRandomSquareContent(){
+        document.getElementById('sq1').innerHTML = getRandomContent();
+        document.getElementById('sq2').innerHTML = getRandomContent();
+        document.getElementById('sq3').innerHTML = getRandomContent();
+        document.getElementById('sq4').innerHTML = getRandomContent();
+        document.getElementById('sq5').innerHTML = getRandomContent();
+        document.getElementById('sq6').innerHTML = getRandomContent();
+        document.getElementById('sq7').innerHTML = getRandomContent();
+        document.getElementById('sq8').innerHTML = getRandomContent();
+        document.getElementById('sq9').innerHTML = getRandomContent();
+
+        
+      }
+
+      function searchForThreeOrMoreOccurances(){
+        //denne må de google seg til - for å unngå loops&arrays - vet ikke hva som er verst :P
+        var count1 = (allcontent.match(/1-1/g) || []).length;
+        var count2 = (allcontent.match(/Terje/g) || []).length;
+        var count3 = (allcontent.match(/Heart/g) || []).length;
+        var count4 = (allcontent.match(/Film/g) || []).length;
+        
+        if(count1 >= 3){getPrize("1-1")}
+        if(count2 >= 3){getPrize("Kvalitetstid med TERJE!")}
+        if(count3 >= 3){getPrize("Ekstra teambuilding halvtime!")}
+        if(count4 >= 3){getPrize("Filmkveld!")}
+      }
+
+      function getPrize(prize){
+        if(clickCount >= 9){
+            document.getElementById('winMsg').innerHTML += `
+        <li>GRATULERER! Du har vunnet: ${prize}!</li>
+        `;
+        }
+        
+      }
+
+    </script>   
+</body>
+</html>

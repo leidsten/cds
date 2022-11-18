@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="output"></div>
+    
+
+
+    <script>
+/*
+
+Lag en funksjon som tar imot ett parameter og 
+ganger dette parameteret med seg selv. 
+Bruk denne funksjonen i viewet med dollar(om MVC) 
+eller i en variabel, gi den et tall og vis 
+regnestykke og sum på nettsida. Tall og regnestykket kan hardkodes
+
+Lag en lignende funksjon - denne tar imot to parameter og gir ut
+summen av disse to ganget med hverandre - vis også dette på nettsiden
+
+Om MVC:
+Lag en tredje funksjon som tar imot ett parameter
+Denne skal gi ut en setning som forteller hvilken farge
+bilen din har - ut fra hvilken farge som sendes til funksjonen
+
+*/
+
+const app = document.getElementById('output');
+
+let multiplySelf1 = multiplyOneParam(5)
+let multiplySelf2 = multiplyOneParam(2)
+let multiplyOther1 = multiplyTwoParam(3, 4);
+let multiplyOther2 = multiplyTwoParam(7, 2);
+
+view();
+function view(){
+    app.innerHTML = `#1:  5x5 = ${multiplySelf1} <br>
+    #2:  2X2 = ${multiplySelf2} <br>
+    #3:  3X4 = ${multiplyOther1} <br>
+    #4:  7X2 = ${multiplyOther2} <br>
+    ${myCarColor("red")}
+    `;
+}
+
+
+function multiplyOneParam(num1){
+   return num1*num1;
+}
+
+function multiplyTwoParam(num1, num2){
+    return num1*num2;
+}
+
+
+function myCarColor(color){
+    return `The color of my car is ${color}, btw`;
+}
+
+
+
+
+
+
+
+// function doMath(n1,n2,opr){
+//     if(opr == "*")multiplyTwoParam(n1, n2)
+//     else if(opr == "+") addTwoParam(n1, n2)
+//     else {console.log("error")}
+// }
+
+function addTwoParam(num1, num2){
+    return num1+num2;
+}
+    </script>
+</body>
+</html>

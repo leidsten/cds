@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- 
+    OPPG 2
+    1. En knapp som kaster en terning - gi ut et tall mellom 1 og 6. Sjekk med en console.log som kaller på funksjonen
+    2. Lag en funksjon som bruker forrige funksjon til å gjøre 5 kast (med loop)
+    3. Lagre alle tallene som blir kastet - vis deretter disse på skjermen
+    4. Tell opp hvor mange 6'ere som er kastet og vis dette
+
+    OPPG 1
+  1. div som kan klikkes på, tekst med små bokst inni
+  2. funksjon som tar imot string - gjør om tekst til store bokstaver
+
+
+-->
+<body>
+    <button onclick="throwAllDice()">Kast Terninger!</button>
+    <div id="app"></div>
+    <script>
+        const app = document.getElementById('app');
+        let howMany6 = 0;
+        let diceNumbers = [];
+
+
+        function showThrows(){
+            let html = "You threw:";
+            for(let i = 0; i < diceNumbers.length; i++){
+                html += `<li> ${diceNumbers[i]} </li>`;
+                if(diceNumbers[i] == 6){howMany6++}
+            }
+            html += ` <br>   and ${howMany6} of those are 6'es` 
+            app.innerHTML = html;
+            console.log(html)
+        }
+
+        function throwAllDice(){
+          for(let i = 0; i <= 5; i++){
+            throwOneDie();
+            console.log("die thrown")
+          }
+          showThrows();
+        }
+
+        function throwOneDie(){
+            let randomNum = Math.floor(Math.random() *6)+1;
+            diceNumbers.push(randomNum);
+            return randomNum;
+        }
+
+    </script>
+</body>
+</html>

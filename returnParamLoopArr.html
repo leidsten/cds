@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+
+<script>
+    const app = document.getElementById('app');
+    let colors = ['red', 'blue', 'purple'];
+    let selectedColor = "";
+    
+//få view of variabler - loope ut farger først, så lage input og legge til nye farger
+//så lage "selected color" logikken 
+//retunr funksjonen som bruker selectedColor til slutt
+
+    view();
+    function view(){
+        let html = `
+        <input type="text" onchange="addColor(this.value)" />
+        `;
+        for(let i = 0; i < colors.length; i++){
+            html += `<li> ${colors[i]} <button onclick="selectColor(colors[${i}])">Select</button></li>`
+            
+        }
+        html += myCarColor();
+        app.innerHTML = html;
+    }
+
+    function addColor(color){
+        colors.push(color);
+        view();
+    }
+
+    function selectColor(clickedColor){
+        selectedColor = clickedColor;
+        view();
+    }
+
+    function myCarColor(){
+        if(selectedColor != "")return `The color of my car is ${selectedColor} by the way, thanks for asking.`;
+        else return "";
+    }
+
+</script>
+</body>
+</html>
