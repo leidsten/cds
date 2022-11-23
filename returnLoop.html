@@ -18,6 +18,26 @@
         */
         const app = document.getElementById('app');
         let names = ["Per", "Anders", "Kari", "Anna"];
+        const model = {
+            allSpoilers : [
+                {name : "spiler12", kulhet: 45, img: "imagelink"},
+                {name : "spiler44", kulhet: 2}
+            ],
+            allWheels : [
+                {name: "wheel 1", kulhet}
+            ]
+
+        };
+        let testObj = {
+            a: "hei",
+            b: [42, 43, 44],
+            c: "noe rart"
+        };
+
+        for(let i = 0; i < testObj.b.length; i++){
+            console.log(testObj.b[i]);
+        }
+        // console.log(testObj.b[1])
 
         view();
         function view(){

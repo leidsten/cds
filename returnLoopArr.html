@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Return, loop & array</title>
+</head>
+<body>
+    <div id="app"></div>
+
+    <script>
+        /*
+        1. Loop ut navn fra array så det synes på nettsiden i <li> tags
+        2. Bruk en funksjon med return til å legge til en tekst foran hvert hvert navn i <li>listen</li>. 
+            Bruk funksjonen i loopen så det blir: eks. "Heisan sveisan Per!" "Heisan sveisan Anders!" osv
+        3. Legg til et input felt i viewet, som er koblet til en funksjon hvor man kan legge til nye navn i arrayet
+        4. Done :D
+        */
+        const app = document.getElementById('app');
+        let names = ["Per", "Anders", "Kari", "Anna"];
+
+        view();
+        function view(){
+            let html = ``;
+           
+
+            app.innerHTML = html;
+        }
+
+       
+
+    </script>
+</body>
+</html>
