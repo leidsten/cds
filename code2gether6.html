@@ -7,6 +7,7 @@
     <title>Document</title>
 </head>
 <body>
+    <div id="app"></div>
     <script>
         /*
         -=|SYMPTOM SJEKKER APP|=-
@@ -16,12 +17,94 @@
 
         1. Det skal være mulig å taste inn ett og ett symptom i et inputfelt - disse skal lagres
         2. Ved å trykke på f.eks en knapp så skal man kunne få opp forslag til sykdommer man kan ha
-        3. Gjør det mulig å bli koblet opp til en lege som er spesialist i dette feltet på en enkel måte
+        3. Gjør det mulig å bli koblet opp til en lege som er spesialist på den sykdommen man velger på en enkel måte
         4. La "Legen" komme med svar når man stiller spørsmål til denne legen vía et input. 
            La gjerne de forskjellige legene ha forskjellige svar
         
         
         */
+        const app = document.getElementById('app');
+        const sicknesses = [
+            {
+                name: "covid",
+                symptoms: ["cough", "fever", "tiredness"]
+            },
+            {
+                name: "manflu",
+                symptoms: ["cough", "runny nose", "need for beer"]  
+            },
+            {
+                name: "broken leg",
+                symptoms: ["pain", "swollen leg", "visible bonepipe", "blood", "discoloration"]
+            },
+            {
+                name: "eye infection",
+                symptoms: ["red eye", "pain", "difficulty opening eye", "discoloration"]
+            },
+        ];
+        const doctors = [
+            {
+                name: "Teddy",
+                specialties: ["manflu", "eye infection"]
+            },{
+                name: "Freddy",
+                specialties: ["manflu", "broken leg"]
+            },{
+                name: "Bella Bu",
+                specialties: ["covid", "eye infection"]
+            }
+        ];
+        const inputSymptArr = [];
+        const possibleSicknesses = [];  
+        let doctorForYou = "";  
+
+
+        view();
+        function view(){
+            let html = `
+            <input type="text" style="width: 200px" onchange="getSymptomsFromInput(this.value)" placeholder="tast inn ett symptom av gangen"/><br>
+            <button onclick="matchSymptsToSickness()">Kalkuler symptomer...</button><br>
+            You may have the following illnesses:
+            `;
+            for(sickness of possibleSicknesses){ 
+                html += `<li>${sickness} <button onclick="matchSicknessToDoc('${sickness}')"> Get Doctor for this</button> </li> `
+            }
+
+            html += `<br>You got Doctor: ${doctorForYou}`
+            app.innerHTML = html;
+        }
+
+        function getSymptomsFromInput(inputSympt){
+            inputSympt = inputSympt.toLowerCase();
+            inputSymptArr.push(inputSympt);
+            // let inputSymptArr = inputSympt.split(" ");
+            //matchSymptsToSickness(inputSymptArr)
+            view()
+        }
+
+        function matchSymptsToSickness(){
+             for(let i = 0; i < inputSymptArr.length; i++){
+                for(sickness of sicknesses){
+                   if(sickness.symptoms.includes(inputSymptArr[i])) {
+                        possibleSicknesses.push(sickness.name)
+                    }
+                }
+            }
+            console.log(possibleSicknesses)
+            view();
+        }
+
+        function matchSicknessToDoc(illness){
+            for(let i = 0; i < doctors.length; i++){
+                for(specialties of doctors[i].specialties){
+                    if(specialties == illness){
+                        doctorForYou = doctors[i].name;
+                    }
+                }
+            }
+            view();
+        }
+
     </script>
 </body>
 </html>
